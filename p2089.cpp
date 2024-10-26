@@ -11,12 +11,12 @@ int arr[N];
 int res=0;
 int mem[35095][N]={0};
 
-void dfs(int x,int sum)
+void dfs(int x,int sum) //dfs:使用for往下遍历，遵循从小到大的原则，设置的参数一般代表位置
 {
-if(sum>n) return; //剪枝
-if(x==11)         //将sum!=n情况区分
+if(sum>n) return; //剪枝,遍历的时候会遍历到不符合的情况，然后进行剪枝
+if(x==11)         
 {
-if(sum==n)
+if(sum==n)        //将sum!=n情况区分      
 {
 for(int i=1;i<=10;i++)
 {
