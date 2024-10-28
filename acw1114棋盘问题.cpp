@@ -7,16 +7,17 @@ const int N = 15;
 
 int n,k;
 char g[N][N];
-bool st[N];
+bool st[N];                 //标记某一列是否可以放棋子
 int res=0;
 
 void dfs(int x,int cnt)
 {
-    if(x>=n) return ;
-    if(cnt==k) 
+    if(cnt==k)             //这个要放在x>=n前，临界条件下cnt==k+1时是卡在x==n的  
     {
         res++;
+        return;            //注意return
     }
+    if(x>=n) return ;
     
   for(int i=0;i<n;i++)
   {
@@ -27,12 +28,12 @@ void dfs(int x,int cnt)
           st[i]=false;
       }
   }
-  dfs(x+1,cnt);
+  dfs(x+1,cnt);                //第一行不放棋子的情况
 }
 
 int main()
 {
-    while(cin>>n>>k,n>0&&k>0)
+    while(cin>>n>>k,n>0&&k>0)  //c++特殊用法，做笔记;输入多组数据的循环
     {
         for(int i=0;i<n;i++)
         {
